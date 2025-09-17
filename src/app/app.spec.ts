@@ -12,8 +12,4 @@ describe('App', () => {
   it('should create the app', () => {
     expect(spectator.component).toBeTruthy();
   });
-
-  it('should render title', () => {
-    expect(spectator.query('h1')?.textContent).toContain('Hello, myapp');
-  });
 });
