@@ -1,23 +1,19 @@
-# Angular Starter Blueprint
+
+# Project Blueprint
 
 ## Overview
+This is a starter Angular application configured to use modern features, including standalone components and a zoneless change detection strategy.
 
-Angular starter project that has everything setup for development needs.
+## Current Request: Switch to Zoneless
 
-## Style, Design, and Features
+### Plan:
+1. **Update `blueprint.md`**: Create and update the `blueprint.md` file to reflect the new goal of making the application zoneless.
+2. **Modify Polyfills**: Remove the `zone.js` import from the application's polyfills. This is the library that Angular traditionally uses to automatically trigger change detection.
+3. **Update Bootstrap Configuration**: Configure the application to bootstrap with a `'noop'` `ngZone`. This tells Angular not to use Zone.js, enabling the new zoneless change detection mechanism.
+4. **Verify the Build**: Run `ng build` to ensure that the changes haven't introduced any compilation errors.
+5. **Commit Changes**: Commit the changes to your Git repository.
 
-*   **Framework:** Angular 20+
-*   **Architecture:** 100% Standalone Components
-*   **State Management:** Angular Signals
-*   **Control Flow:** Native `@` syntax (`@for`, `@if`)
-*   **Testing:** Jest with TypeScript configuration
-*   **Styling:** Should be based on TailwindCSS
-*   **Functionality:**
-    *   Keep app without any functionality
-
----
-
-### **Phase 1: Setup Testing Environment**
-
-1.  **Install Jest:** Use `@briebug/jest-schematic` to switch to Jest. *(Complete)*
-2.  **Convert to TypeScript Config:** Convert the generated `jest.config.js` to a `jest.config.ts` file for better type safety and consistency.
+### Completed Steps:
+* Updated `app.config.ts` to use `provideZonelessChangeDetection`.
+* Corrected `angular.json` to point to the correct `tsconfig.json` file.
+* Verified the build was successful after the changes.
