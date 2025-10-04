@@ -1,5 +1,15 @@
-<div class="bg-gray-100 m-5 p-5">
-  <h1 class="text-2xl font-bold mb-8">Hello, {{ title() }}</h1>
-  <p>Congratulations! Your app is running. 🎉</p>
-  <p class="font-roboto mt-5">Congratulations! Your app is running. 🎉</p>
+<div class="flex justify-center items-center h-full w-full">
+  <z-card
+    class="max-w-sm flex flex-col gap-5"
+    zTitle="Hello, {{ title() }}"
+    zDescription="Congratulations! Your app is running. 🎉">
+    <button
+      z-button
+      type="button"
+      class="w-full"
+      (click)="onClick()"
+      [disabled]="disabled()">
+      Click me
+    </button>
+  </z-card>
 </div>

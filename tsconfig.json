@@ -16,7 +16,13 @@
     "outDir": "./out-tsc/app",
     "types": [
       "jest"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*": [
+        "src/app/shared/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
