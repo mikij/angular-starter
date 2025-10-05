@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 
+export enum Theme {
+  light = 'light',
+  dark = 'dark',
+}
+
+export type ThemeType = Theme.light | Theme.dark;
+
 @Injectable({
   providedIn: 'root',
 })
-export class DarkMode {
+export class ZardUITheme {
   private readonly storageKey = 'theme';
 
   initTheme(): void {
@@ -13,23 +20,21 @@ export class DarkMode {
       (!savedTheme &&
         window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-    this.applyTheme(isDark ? 'dark' : 'light');
+    this.applyTheme(isDark ? Theme.dark : Theme.light);
   }
 
   toggleTheme(): void {
     const currentTheme = this.getCurrentTheme();
-    this.applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    this.applyTheme(currentTheme === Theme.dark ? Theme.light : Theme.dark);
   }
 
-  getCurrentTheme(): 'light' | 'dark' {
-    return (
-      (localStorage.getItem(this.storageKey) as 'light' | 'dark') || 'light'
-    );
+  getCurrentTheme(): ThemeType {
+    return (localStorage.getItem(this.storageKey) as ThemeType) || Theme.light;
   }
 
-  private applyTheme(theme: 'light' | 'dark'): void {
+  private applyTheme(theme: ThemeType): void {
     const html = document.documentElement;
-    const isDark = theme === 'dark';
+    const isDark = theme === Theme.dark;
 
     html.classList.toggle('dark', isDark);
     html.setAttribute('data-theme', theme);

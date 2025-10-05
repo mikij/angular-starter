@@ -1,6 +1,6 @@
-# Myapp
+# Angular Starter
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2. It is zoneless Angular project with preconfigured Jest/Spectator for testing, Eslint and Prettier with pre-commit hook, TailwindCSS v4 ans ZardUI components. As default font for the application, Inter has been used.
 
 ## Development server
 

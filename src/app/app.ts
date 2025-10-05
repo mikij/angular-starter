@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DarkMode } from '@shared/services/dark-mode';
+import { ZardUITheme } from '@shared/services/zard-ui-theme';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,9 @@ import { DarkMode } from '@shared/services/dark-mode';
   template: `<router-outlet />`,
 })
 export class App implements OnInit {
-  private readonly darkMode = inject(DarkMode);
+  readonly #uiTheme = inject(ZardUITheme);
 
   ngOnInit(): void {
-    this.darkMode.initTheme();
+    this.#uiTheme.initTheme();
   }
 }

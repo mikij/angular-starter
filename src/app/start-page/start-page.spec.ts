@@ -38,10 +38,12 @@ describe('StartPage', () => {
   });
 
   it('should switch to dark mode on button click', () => {
-    const button = spectator.query('button') as HTMLButtonElement;
+    const button = spectator.query('z-button') as HTMLButtonElement;
 
     button.click();
+    spectator.detectChanges();
 
-    expect(spectator.component.getCurrentTheme()).toBe('dark');
+    expect(localStorage.getItem('theme')).toBe('dark');
+    expect(button).toHaveText('Switch to light mode');
   });
 });

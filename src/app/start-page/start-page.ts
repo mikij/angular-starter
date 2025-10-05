@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ZardButtonComponent } from '@shared/components/button/button.component';
 import { ZardCardComponent } from '@shared/components/card/card.component';
-import { DarkMode } from '@shared/services/dark-mode';
+import { Theme, ThemeType, ZardUITheme } from '@shared/services/zard-ui-theme';
 
 @Component({
   selector: 'app-start-page',
@@ -11,14 +11,16 @@ import { DarkMode } from '@shared/services/dark-mode';
 })
 export class StartPage {
   readonly #appTitle = inject(Title);
-  readonly #darkMode = inject(DarkMode);
+  readonly #uiTheme = inject(ZardUITheme);
   protected readonly title = signal(this.#appTitle.getTitle());
 
   protected toggleTheme(): void {
-    this.#darkMode.toggleTheme();
+    this.#uiTheme.toggleTheme();
   }
 
-  getCurrentTheme(): 'light' | 'dark' {
-    return this.#darkMode.getCurrentTheme();
+  protected getCounterTheme(): ThemeType {
+    return this.#uiTheme.getCurrentTheme() === Theme.dark
+      ? Theme.light
+      : Theme.dark;
   }
 }

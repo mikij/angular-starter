@@ -6,4 +6,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./start-page/start-page').then(m => m.StartPage),
   },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
