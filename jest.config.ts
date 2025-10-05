@@ -17,5 +17,4 @@ const config: Config = {
     '^@shared/(.*)$': '<rootDir>/src/app/shared/$1',
   },
 };
-
 export default config;

@@ -1,10 +1,19 @@
-import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
+import { Title } from '@angular/platform-browser';
+import {
+  Spectator,
+  createComponentFactory,
+  mockProvider,
+} from '@ngneat/spectator/jest';
 import { ZardCardComponent } from '@shared/components/card/card.component';
 import { StartPage } from './start-page';
 
 describe('StartPage', () => {
   let spectator: Spectator<StartPage>;
-  const createComponent = createComponentFactory(StartPage);
+  const createComponent = createComponentFactory({
+    component: StartPage,
+    providers: [mockProvider(Title, { getTitle: () => 'Angular Starter' })],
+    shallow: true,
+  });
 
   beforeEach(() => {
     spectator = createComponent();
@@ -17,7 +26,7 @@ describe('StartPage', () => {
   it('should render card title', () => {
     const card = spectator.query(ZardCardComponent);
 
-    expect(card?.zTitle()).toContain('Hello, myapp');
+    expect(card?.zTitle()).toContain('Hello, Angular Starter');
   });
 
   it('should render card description', () => {
@@ -28,13 +37,11 @@ describe('StartPage', () => {
     );
   });
 
-  it('should render card title upon button click', () => {
-    const card = spectator.query(ZardCardComponent);
+  it('should switch to dark mode on button click', () => {
     const button = spectator.query('button') as HTMLButtonElement;
 
     button.click();
-    spectator.detectChanges();
 
-    expect(card?.zTitle()).toContain('Hello, Zard UI');
+    expect(spectator.component.getCurrentTheme()).toBe('dark');
   });
 });

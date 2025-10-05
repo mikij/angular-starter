@@ -3,13 +3,8 @@
     class="max-w-sm"
     zTitle="Hello, {{ title() }}"
     zDescription="Congratulations! Your app is running. 🎉">
-    <div class="flex flex-col gap-5">
-      <z-button
-        zType="default"
-        class="self-end"
-        (click)="toggleTheme()">
-        Switch theme
-      </z-button>
+    <div class="flex flex-col items-center gap-5">
+      <button z-button (click)="toggleTheme()">Switch theme</button>
       <span>Current theme: {{ getCurrentTheme() }}</span>
     </div>
   </z-card>

@@ -1,14 +1,14 @@
 {
   "style": "css",
-  "packageManager": "npm",
+  "packageManager": "pnpm",
   "tailwind": {
     "css": "src/styles.css",
-    "baseColor": "slate",
-    "cssVariables": true
+    "baseColor": "neutral",
+    "cssVariables": false
   },
   "aliases": {
     "components": "src/app/shared/components",
     "utils": "src/app/shared/utils"
   },
-  "theme": "slate"
+  "theme": "neutral"
 }
