@@ -3,6 +3,7 @@ import angular from 'angular-eslint';
 import unusedImports from 'eslint-plugin-unused-imports';
 import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 export default defineConfig([
   {
@@ -31,6 +32,7 @@ export default defineConfig([
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
+      ...pluginQuery.configs['flat/recommended'],
     ],
     languageOptions: {
       parser: tseslint.parser,
