@@ -56,6 +56,7 @@ export default defineConfig([
           style: 'kebab-case',
         },
       ],
+      '@angular-eslint/prefer-on-push-component-change-detection': ['warn'],
     },
   },
   {

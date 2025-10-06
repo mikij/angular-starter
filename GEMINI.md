@@ -216,7 +216,7 @@ The AI's workflow is iterative, transparent, and responsive to user input.
 * **Error Checking Flow:**
   1. **Important:** The AI will **not** start the dev server (`ng serve`), as it is already managed by Firebase Studio.
   2. **Code Change:** AI applies a code modification.
-  3. **Dependency Check:** If a new package is needed, AI runs `npm install`.
+  3. **Dependency Check:** If a new package is needed, AI runs `pnpm install`.
   4. **Compile & Analyze:** AI runs `ng build` and monitors the dev server.
   5. **Preview Check:** AI observes the browser preview for visual and runtime errors.
   6. **Remediation/Report:** If errors are found, AI attempts automatic fixes. If unsuccessful, it reports details to the user.
