@@ -7,7 +7,11 @@ import {
 import { Title } from '@angular/platform-browser';
 import { ZardButtonComponent } from '@shared/components/button/button.component';
 import { ZardCardComponent } from '@shared/components/card/card.component';
-import { Theme, ThemeType, ZardUITheme } from '@shared/services/zard-ui-theme';
+import {
+  Theme,
+  type ThemeType,
+  ZardUITheme,
+} from '@shared/services/zard-ui-theme';
 
 @Component({
   selector: 'app-start-page',
