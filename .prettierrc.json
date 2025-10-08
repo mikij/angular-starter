@@ -4,10 +4,11 @@
   "singleQuote": true,
   "semi": true,
   "bracketSpacing": true,
-  "arrowParens": "avoid",
+  "arrowParens": "always",
   "trailingComma": "es5",
   "bracketSameLine": true,
   "printWidth": 80,
+  "htmlWhitespaceSensitivity": "strict",
   "overrides": [
     {
       "files": "*.html",
@@ -16,5 +17,8 @@
       }
     }
   ],
-  "plugins": ["prettier-plugin-organize-imports"]
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ]
 }

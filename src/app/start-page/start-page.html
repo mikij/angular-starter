@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-5 justify-center items-center h-full w-full">
+<div class="h-full w-full flex flex-col items-center justify-center gap-5">
   @let iconName = getCounterTheme() === 'light' ? 'moon' : 'sun';
   <z-card
     class="max-w-sm"
@@ -12,7 +12,8 @@
         [attr.aria-label]="text"
         >{{ text }}</z-button
       >
-      <span class="flex items-center gap-3 self-end text-orange-400 dark:text-gray-400">
+      <span
+        class="flex items-center gap-3 self-end text-orange-400 dark:text-gray-400">
         Current theme: <i class="icon-{{ iconName }}"></i>
       </span>
     </div>
