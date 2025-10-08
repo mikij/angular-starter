@@ -12,6 +12,7 @@ import {
   type ThemeType,
   ZardUITheme,
 } from '@shared/services/zard-ui-theme';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-start-page',
@@ -26,11 +27,19 @@ export class StartPage {
 
   protected toggleTheme(): void {
     this.#uiTheme.toggleTheme();
+    this.showToast();
   }
 
   protected getCounterTheme(): ThemeType {
     return this.#uiTheme.getCurrentTheme() === Theme.dark
       ? Theme.light
       : Theme.dark;
+  }
+
+  private showToast() {
+    toast.success('Theme switcher', {
+      description: 'The theme has been changed...',
+      position: 'bottom-center',
+    });
   }
 }

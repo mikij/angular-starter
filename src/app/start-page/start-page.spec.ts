@@ -5,6 +5,7 @@ import {
   mockProvider,
 } from '@ngneat/spectator/jest';
 import { ZardCardComponent } from '@shared/components/card/card.component';
+import { toast } from 'ngx-sonner';
 import { StartPage } from './start-page';
 
 describe('StartPage', () => {
@@ -39,11 +40,13 @@ describe('StartPage', () => {
 
   it('should switch to dark mode on button click', () => {
     const button = spectator.query('z-button') as HTMLButtonElement;
+    const spy = jest.spyOn(toast, 'success');
 
     button.click();
     spectator.detectChanges();
 
     expect(localStorage.getItem('theme')).toBe('dark');
     expect(button).toHaveText('Switch to light mode');
+    expect(spy).toHaveBeenCalled();
   });
 });
