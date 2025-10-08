@@ -34,6 +34,8 @@ import { popoverVariants } from './popover.variants';
 export type ZardPopoverTrigger = 'click' | 'hover' | null;
 export type ZardPopoverPlacement = 'top' | 'bottom' | 'left' | 'right';
 
+const VIEWPORT_MARGIN = 8;
+
 const POPOVER_POSITIONS_MAP = {
   top: {
     originX: 'center',
@@ -41,7 +43,7 @@ const POPOVER_POSITIONS_MAP = {
     overlayX: 'center',
     overlayY: 'bottom',
     offsetX: 0,
-    offsetY: -8,
+    offsetY: -VIEWPORT_MARGIN,
   },
   bottom: {
     originX: 'center',
@@ -49,14 +51,14 @@ const POPOVER_POSITIONS_MAP = {
     overlayX: 'center',
     overlayY: 'top',
     offsetX: 0,
-    offsetY: 8,
+    offsetY: VIEWPORT_MARGIN,
   },
   left: {
     originX: 'start',
     originY: 'center',
     overlayX: 'end',
     overlayY: 'center',
-    offsetX: -8,
+    offsetX: -VIEWPORT_MARGIN,
     offsetY: 0,
   },
   right: {
@@ -64,7 +66,7 @@ const POPOVER_POSITIONS_MAP = {
     originY: 'center',
     overlayX: 'start',
     overlayY: 'center',
-    offsetX: 8,
+    offsetX: VIEWPORT_MARGIN,
     offsetY: 0,
   },
 } as const;
@@ -196,13 +198,14 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
         .flexibleConnectedTo(this.nativeElement)
         .withPositions(this.getPositions())
         .withPush(true)
-        .withFlexibleDimensions(true)
-        .withViewportMargin(8);
+        .withFlexibleDimensions(false)
+        .withViewportMargin(VIEWPORT_MARGIN)
+        .withLockedPosition(true);
 
       this.overlayRef = this.overlay.create({
         positionStrategy,
         hasBackdrop: false,
-        scrollStrategy: this.overlay.scrollStrategies.close(),
+        scrollStrategy: this.overlay.scrollStrategies.reposition(),
       });
     }
   }
@@ -232,7 +235,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           overlayX: 'center',
           overlayY: 'bottom',
           offsetX: 0,
-          offsetY: -8,
+          offsetY: -VIEWPORT_MARGIN,
         });
         // If neither top nor bottom work, try right
         positions.push({
@@ -240,7 +243,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           originY: 'center',
           overlayX: 'start',
           overlayY: 'center',
-          offsetX: 8,
+          offsetX: VIEWPORT_MARGIN,
           offsetY: 0,
         });
         // Finally try left
@@ -249,7 +252,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           originY: 'center',
           overlayX: 'end',
           overlayY: 'center',
-          offsetX: -8,
+          offsetX: -VIEWPORT_MARGIN,
           offsetY: 0,
         });
         break;
@@ -261,7 +264,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           overlayX: 'center',
           overlayY: 'top',
           offsetX: 0,
-          offsetY: 8,
+          offsetY: VIEWPORT_MARGIN,
         });
         // If neither top nor bottom work, try right
         positions.push({
@@ -269,7 +272,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           originY: 'center',
           overlayX: 'start',
           overlayY: 'center',
-          offsetX: 8,
+          offsetX: VIEWPORT_MARGIN,
           offsetY: 0,
         });
         // Finally try left
@@ -278,7 +281,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           originY: 'center',
           overlayX: 'end',
           overlayY: 'center',
-          offsetX: -8,
+          offsetX: -VIEWPORT_MARGIN,
           offsetY: 0,
         });
         break;
@@ -289,7 +292,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           originY: 'center',
           overlayX: 'end',
           overlayY: 'center',
-          offsetX: -8,
+          offsetX: -VIEWPORT_MARGIN,
           offsetY: 0,
         });
         // If neither left nor right work, try bottom
@@ -299,7 +302,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           overlayX: 'center',
           overlayY: 'top',
           offsetX: 0,
-          offsetY: 8,
+          offsetY: VIEWPORT_MARGIN,
         });
         // Finally try top
         positions.push({
@@ -308,7 +311,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           overlayX: 'center',
           overlayY: 'bottom',
           offsetX: 0,
-          offsetY: -8,
+          offsetY: -VIEWPORT_MARGIN,
         });
         break;
       case 'left':
@@ -318,7 +321,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           originY: 'center',
           overlayX: 'start',
           overlayY: 'center',
-          offsetX: 8,
+          offsetX: VIEWPORT_MARGIN,
           offsetY: 0,
         });
         // If neither left nor right work, try bottom
@@ -328,7 +331,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           overlayX: 'center',
           overlayY: 'top',
           offsetX: 0,
-          offsetY: 8,
+          offsetY: VIEWPORT_MARGIN,
         });
         // Finally try top
         positions.push({
@@ -337,7 +340,7 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
           overlayX: 'center',
           overlayY: 'bottom',
           offsetX: 0,
-          offsetY: -8,
+          offsetY: -VIEWPORT_MARGIN,
         });
         break;
     }
