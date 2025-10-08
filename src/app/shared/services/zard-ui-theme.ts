@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { DOCUMENT, inject, Injectable } from '@angular/core';
 
 export enum Theme {
   light = 'light',
@@ -12,6 +12,7 @@ export type ThemeType = Theme.light | Theme.dark;
 })
 export class ZardUITheme {
   private readonly storageKey = 'theme';
+  private readonly document = inject(DOCUMENT);
 
   initTheme(): void {
     const savedTheme = localStorage.getItem(this.storageKey);
@@ -33,7 +34,7 @@ export class ZardUITheme {
   }
 
   private applyTheme(theme: ThemeType): void {
-    const html = document.documentElement;
+    const html = this.document.documentElement;
     const isDark = theme === Theme.dark;
 
     html.classList.toggle('dark', isDark);
