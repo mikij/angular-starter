@@ -10,12 +10,12 @@ export type ThemeType = Theme.light | Theme.dark;
 @Injectable({
   providedIn: 'root',
 })
-export class ZardUITheme {
-  private readonly storageKey = 'theme';
-  private readonly document = inject(DOCUMENT);
+export class ThemeManager {
+  readonly #storageKey = 'theme';
+  readonly #document = inject(DOCUMENT);
 
   initTheme(): void {
-    const savedTheme = localStorage.getItem(this.storageKey);
+    const savedTheme = localStorage.getItem(this.#storageKey);
     const isDark =
       savedTheme === 'dark' ||
       (!savedTheme &&
@@ -30,16 +30,16 @@ export class ZardUITheme {
   }
 
   getCurrentTheme(): ThemeType {
-    return (localStorage.getItem(this.storageKey) as ThemeType) || Theme.light;
+    return (localStorage.getItem(this.#storageKey) as ThemeType) || Theme.light;
   }
 
   private applyTheme(theme: ThemeType): void {
-    const html = this.document.documentElement;
+    const html = this.#document.documentElement;
     const isDark = theme === Theme.dark;
 
     html.classList.toggle('dark', isDark);
     html.setAttribute('data-theme', theme);
     html.style.colorScheme = theme;
-    localStorage.setItem(this.storageKey, theme);
+    localStorage.setItem(this.#storageKey, theme);
   }
 }

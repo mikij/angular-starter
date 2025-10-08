@@ -1,17 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ZardButtonComponent } from '@shared/components/button/button.component';
 import { ZardCardComponent } from '@shared/components/card/card.component';
 import {
   Theme,
+  ThemeManager,
   type ThemeType,
-  ZardUITheme,
-} from '@shared/services/zard-ui-theme';
+} from '@shared/services/theme-manager';
 import { toast } from 'ngx-sonner';
 
 @Component({
@@ -21,22 +16,21 @@ import { toast } from 'ngx-sonner';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartPage {
-  readonly #appTitle = inject(Title);
-  readonly #uiTheme = inject(ZardUITheme);
-  protected readonly title = signal(this.#appTitle.getTitle());
+  readonly #themeManager = inject(ThemeManager);
+  protected readonly title = inject(Title);
 
   protected toggleTheme(): void {
-    this.#uiTheme.toggleTheme();
-    this.showToast();
+    this.#themeManager.toggleTheme();
+    this.#showToast();
   }
 
   protected getCounterTheme(): ThemeType {
-    return this.#uiTheme.getCurrentTheme() === Theme.dark
+    return this.#themeManager.getCurrentTheme() === Theme.dark
       ? Theme.light
       : Theme.dark;
   }
 
-  private showToast() {
+  #showToast() {
     toast.success('Theme switcher', {
       description: 'The theme has been changed...',
       position: 'bottom-center',
