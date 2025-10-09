@@ -197,10 +197,9 @@ export class ZardPopoverDirective implements OnInit, OnDestroy {
       const positionStrategy = this.overlayPositionBuilder
         .flexibleConnectedTo(this.nativeElement)
         .withPositions(this.getPositions())
-        .withPush(true)
+        .withPush(false)
         .withFlexibleDimensions(false)
-        .withViewportMargin(VIEWPORT_MARGIN)
-        .withLockedPosition(true);
+        .withViewportMargin(VIEWPORT_MARGIN);
 
       this.overlayRef = this.overlay.create({
         positionStrategy,
