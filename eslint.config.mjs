@@ -7,7 +7,7 @@ import pluginQuery from '@tanstack/eslint-plugin-query';
 
 export default defineConfig([
   {
-    ignores: ['jest.config.ts', 'setup-jest.ts', 'src/app/shared/components/*'],
+    ignores: ['jest.config.ts', 'setup-jest.ts', 'src/app/shared/zardui/*'],
   },
   {
     plugins: { 'unused-imports': unusedImports },
@@ -51,7 +51,7 @@ export default defineConfig([
         },
       ],
       '@angular-eslint/component-selector': [
-        'error',
+        'off',
         {
           type: 'element',
           prefix: 'app',

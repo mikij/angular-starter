@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ZardButtonComponent } from '@shared/components/button/button.component';
-import { ZardCardComponent } from '@shared/components/card/card.component';
+import { ZardButtonComponent } from '@shared/zardui/components/button/button.component';
+import { ZardCardComponent } from '@shared/zardui/components/card/card.component';
 import {
   Theme,
   ThemeManager,
   type ThemeType,
-} from '@shared/services/theme-manager';
+} from '@shared/zardui/services/theme-manager';
 import { toast } from 'ngx-sonner';
 
 @Component({

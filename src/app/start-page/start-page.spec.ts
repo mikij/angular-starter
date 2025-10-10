@@ -4,7 +4,7 @@ import {
   createComponentFactory,
   mockProvider,
 } from '@ngneat/spectator/jest';
-import { ZardCardComponent } from '@shared/components/card/card.component';
+import { ZardCardComponent } from '@shared/zardui/components/card/card.component';
 import { toast } from 'ngx-sonner';
 import { StartPage } from './start-page';
 

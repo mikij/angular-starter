@@ -5,8 +5,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ZardToastComponent } from '@shared/components/toast/toast.component';
-import { ThemeManager } from '@shared/services/theme-manager';
+import { ZardToastComponent } from '@shared/zardui/components/toast/toast.component';
+import { ThemeManager } from '@shared/zardui/services/theme-manager';
 
 @Component({
   selector: 'app-root',
