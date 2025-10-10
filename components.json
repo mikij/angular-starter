@@ -7,8 +7,8 @@
     "cssVariables": false
   },
   "aliases": {
-    "components": "src/app/shared/components",
-    "utils": "src/app/shared/utils"
+    "components": "src/app/shared/zardui/components",
+    "utils": "src/app/shared/zardui/utils"
   },
   "theme": "neutral"
 }

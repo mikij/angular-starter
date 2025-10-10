@@ -31,7 +31,7 @@ export class StartPage {
   }
 
   #showToast() {
-    toast.success('Theme switcher', {
+    toast.success('Theme Manager', {
       description: 'The theme has been changed...',
       position: 'bottom-center',
     });
