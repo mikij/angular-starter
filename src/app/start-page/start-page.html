@@ -1,21 +1,15 @@
 @let counterTheme = getCounterTheme();
 <div class="flex h-full w-full flex-col items-center justify-center gap-5">
-  @let iconName = counterTheme === 'light' ? 'moon' : 'sun';
+  @let icon = counterTheme === 'light' ? Moon : Sun;
   <z-card
     class="max-w-sm"
     [zTitle]="'Hello, ' + title.getTitle()"
     zDescription="Congratulations! Your app is running. 🎉">
     <div class="flex flex-col items-center gap-5">
       @let text = 'Switch to ' + counterTheme + ' mode';
-      <z-button
-        (click)="toggleTheme()"
-        zType="ghost"
-        [attr.aria-label]="text"
-        >{{ text }}</z-button
-      >
-      <span
-        class="flex items-center gap-3 self-end text-orange-400 dark:text-gray-400">
-        Current theme: <i class="icon-{{ iconName }}"></i>
+      <z-button (click)="toggleTheme()" zType="ghost" [attr.aria-label]="text">{{ text }}</z-button>
+      <span class="flex items-center gap-3 self-end text-orange-400 dark:text-gray-400">
+        Current theme: <z-icon [zType]="icon" />
       </span>
     </div>
   </z-card>

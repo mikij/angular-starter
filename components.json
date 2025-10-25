@@ -3,12 +3,11 @@
   "packageManager": "pnpm",
   "tailwind": {
     "css": "src/styles.css",
-    "baseColor": "neutral",
-    "cssVariables": false
+    "baseColor": "zinc",
+    "cssVariables": true
   },
   "aliases": {
     "components": "src/app/shared/zardui/components",
     "utils": "src/app/shared/zardui/utils"
-  },
-  "theme": "neutral"
+  }
 }
