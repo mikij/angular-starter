@@ -59,6 +59,13 @@ export default defineConfig([
         },
       ],
       '@angular-eslint/prefer-on-push-component-change-detection': ['warn'],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
+        },
+      ],
     },
   },
   {
